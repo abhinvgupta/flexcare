@@ -1,7 +1,7 @@
-import CTASection from '../components/CTASection';
+import CTASection from "../components/CTASection";
+import TeamSection from "../components/TeamSection";
 
-const aboutImage =
-  'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=1400&q=80';
+const aboutImage = "about_us.png";
 
 function AboutPage() {
   return (
@@ -70,6 +70,8 @@ function AboutPage() {
           </article>
         </div>
       </section>
+
+      <TeamSection />
 
       <CTASection />
     </>

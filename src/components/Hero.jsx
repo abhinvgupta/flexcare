@@ -18,6 +18,17 @@ function Hero() {
           Expert physiotherapy care delivered to your doorstep with personalised
           treatment plans.
         </p>
+        <div className="hero-pricing" aria-label="Pricing highlight">
+          <div className="hero-pricing-item">
+            <p className="hero-pricing-line">
+              First consultation at home is{" "}
+              <span className="hero-pricing-free">FREE</span>
+              <span className="hero-pricing-separator">.</span> Follow-up
+              sessions start from{" "}
+              <span className="hero-pricing-value">₹799</span>
+            </p>
+          </div>
+        </div>
         <div className="hero-actions">
           <Link to="/contact" className="btn btn-primary">
             Book Now

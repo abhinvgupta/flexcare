@@ -1,8 +1,7 @@
 import { useState } from "react";
 import CentreLocationSection from "../components/CentreLocationSection";
+import { submitContactInquiry } from "../lib/api";
 import "./ContactPage.css";
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 
 function ContactIcon({ children }) {
   return (
@@ -101,6 +100,7 @@ function ContactPage() {
     name: "",
     phone: "",
     email: "",
+    location: "",
     message: "",
   });
   const [submitState, setSubmitState] = useState({
@@ -131,19 +131,7 @@ function ContactPage() {
     });
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/contact`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.message || "Unable to submit your inquiry.");
-      }
+      const result = await submitContactInquiry(formData);
 
       setSubmitState({
         loading: false,
@@ -156,6 +144,7 @@ function ContactPage() {
         name: "",
         phone: "",
         email: "",
+        location: "",
         message: "",
       });
     } catch (error) {
@@ -288,6 +277,19 @@ function ContactPage() {
                   type="email"
                   value={formData.email}
                   onChange={handleChange}
+                />
+              </div>
+
+              <div className="contact-page__field">
+                <label htmlFor="location">Location</label>
+                <input
+                  id="location"
+                  name="location"
+                  type="text"
+                  value={formData.location}
+                  onChange={handleChange}
+                  placeholder="Enter your area, locality, or address"
+                  required
                 />
               </div>
 
