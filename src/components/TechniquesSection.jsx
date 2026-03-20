@@ -70,9 +70,6 @@ function TechniquesSection() {
             >
               <div className="technique-panel__veil" />
               <div className="technique-panel__content">
-                <span className="technique-panel__index">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
                 <h3>{technique.title}</h3>
                 <p>{technique.description}</p>
               </div>

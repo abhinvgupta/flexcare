@@ -1,3 +1,14 @@
+import { BENEFIT_ICONS } from './ServiceCard';
+
+// Trust stats shown beneath each benefit description — adds social proof weight
+const TRUST_STATS = {
+  EG: { value: '500+', label: 'patients treated' },
+  OS: { value: 'MDT', label: 'specialist network' },
+  TC: { value: 'Zero', label: 'hidden fees' },
+  HV: { value: 'KL & Selangor', label: 'home coverage' },
+  PR: { value: 'Every session', label: 'plan reviewed' },
+};
+
 const benefits = [
   {
     title: 'Expert Physiotherapist Guidance',
@@ -44,15 +55,22 @@ function WhyChooseUsSection() {
           </p>
         </div>
         <div className="why-grid">
-          {benefits.map((benefit) => (
-            <article key={benefit.title} className="why-card">
-              <div className="icon-chip" aria-hidden="true">
-                {benefit.icon}
-              </div>
-              <h3>{benefit.title}</h3>
-              <p>{benefit.description}</p>
-            </article>
-          ))}
+          {benefits.map((benefit) => {
+            const svgIcon = BENEFIT_ICONS[benefit.icon];
+            const stat = TRUST_STATS[benefit.icon];
+
+            return (
+              <article key={benefit.title} className="why-card">
+                <div className="why-card__header">
+                  <div className="icon-chip" aria-hidden="true">
+                    {svgIcon || benefit.icon}
+                  </div>
+                </div>
+                <h3>{benefit.title}</h3>
+                <p>{benefit.description}</p>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
